@@ -86,7 +86,7 @@ def download_from_youtube(song_name, message):
                                 timeout=180,
                                 reply_markup=markup
                             )
-                            print(f"Audio: {mp3_file_path.replace('downloads\\', ' ')} -> Sent to user: {message.chat.username}")
+                            # print(f"Audio: {mp3_file_path.replace('downloads\\', ' ')} -> Sent to user: {message.chat.username}")
                             break
                         except Exception as e:
                             print(f"Retry {i + 1}/3 failed: {e}")
