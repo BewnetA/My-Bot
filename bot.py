@@ -184,7 +184,6 @@ def search_from_youtube(song_name, message, page=0):
     page_items = []
     markup = types.InlineKeyboardMarkup(row_width=2)
     ydl_opts = {
-        'cookiefile': 'cookie.txt',
         'format': 'bestaudio/best',
         'extract_flat': True,
     }
