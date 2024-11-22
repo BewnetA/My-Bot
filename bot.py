@@ -3,13 +3,24 @@ import time         # used when to delay the code from sending another file inca
 import threading  # used to delay the deletion of bot message
 import yt_dlp as youtube_dl
 import os
-from telebot import types
-from telebot import telebot, apihelper
-
+from telebot import telebot, apihelper, types
+import subprocess # just for checking the installation of ffmpeg
 
 apihelper.RETRY_ON_TIMEOUT = True
 apihelper.REQUEST_TIMEOUT = 30
 
+
+
+try:
+    result = subprocess.run(['ffmpeg', '-version'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    print("FFmpeg is installed:")
+    print(result.stdout)
+except FileNotFoundError:
+    print("FFmpeg is not available.")
+
+
+ffmpeg_path = os.getenv('FFMPEG_PATH', 'ffmpeg')  # Default to 'ffmpeg' if not set
+print(f"Using ffmpeg at: {ffmpeg_path}")
 bot = telebot.TeleBot('7605652395:AAEFXGuQrrM1FZLKRjJPD6JT0lQ-IgRDTGw')
 
 FFMPEG_PATH = r'C:\Users\Bewnet\Downloads\ffmpeg-master-latest-win64-gpl\bin\ffmpeg.exe'
@@ -197,6 +208,8 @@ def search_from_youtube(song_name, message, page=0):
             button = types.InlineKeyboardButton(
                 f"{item['title']}:  👀 {formated_view} ", callback_data=item['id'])
             markup.add(button)
+
+        print(f"search_title: {search_title}")
 
         back_btn = types.InlineKeyboardButton('⬅️ Back', callback_data='back')
         next_btn = types.InlineKeyboardButton('➡️ Next', callback_data='next')
