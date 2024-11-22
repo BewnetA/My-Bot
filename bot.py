@@ -156,7 +156,7 @@ def choice_handler(call):
 
     else:
         temp_text = bot.send_message(chat_id, f"Downloading...")
-        download_from_youtube(call.data, call.message)
+        threading.Timer(5.0, lambda: download_from_youtube(call.data, call.message)).start()
         bot.delete_message(chat_id, temp_text.id)
 
 
