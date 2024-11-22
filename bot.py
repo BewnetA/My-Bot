@@ -55,7 +55,7 @@ def download_from_youtube(song_name, message):
     chat_id = message.chat.id
     # artist_name = ""
     ydl_opts = {
-        'cookiefile': 'cookie.json',
+        'cookiefile': 'cookie.txt',
         'format': 'bestaudio/best',
         'outtmpl': 'downloads/%(title)s.%(ext)s',
         'postprocessors': [{
@@ -184,7 +184,7 @@ def search_from_youtube(song_name, message, page=0):
     page_items = []
     markup = types.InlineKeyboardMarkup(row_width=2)
     ydl_opts = {
-        'cookiefile': 'cookie.json',
+        'cookiefile': 'cookie.txt',
         'format': 'bestaudio/best',
         'extract_flat': True,
     }
