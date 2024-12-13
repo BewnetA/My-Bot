@@ -21,7 +21,7 @@ except FileNotFoundError:
 
 ffmpeg_path = os.getenv('FFMPEG_PATH', 'ffmpeg')  # Default to 'ffmpeg' if not set
 print(f"Using ffmpeg at: {ffmpeg_path}")
-bot = telebot.TeleBot('7605652395:AAEFXGuQrrM1FZLKRjJPD6JT0lQ-IgRDTGw')
+bot = telebot.TeleBot('my-telgram-token')
 
 FFMPEG_PATH = ffmpeg_path
 
